@@ -1,0 +1,425 @@
+@charset "UTF-8";
+//@import url(//fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic,700,700italic);
+body {
+  font-family:Avenir , "Open Sans" , "Helvetica Neue" , Helvetica , Arial , Verdana , Roboto , "游ゴシック" , "Yu Gothic" , "游ゴシック体" , "YuGothic" , "ヒラギノ角ゴ Pro W3" , "Hiragino Kaku Gothic Pro" , "Meiryo UI" , "メイリオ" , Meiryo , "ＭＳ Ｐゴシック" , "MS PGothic" , sans-serif;
+  color: $black;
+}
+
+
+//sp pc 表示・非表示
+@include max-screen($breakpoint-sp) {
+  body {
+  }
+  .sp-on {
+    display: block;
+  }
+}
+@include min-screen($breakpoint-pc) {
+  body {
+  }
+  .sp-on {
+    display: none!important;
+  }
+}
+
+//inner 幅指定
+.inner {
+  @include max-screen($breakpoint-sp) {
+    width: 96%;
+    margin: 0 auto;
+  }
+  @include min-screen($breakpoint-pc) {
+    width: 900px;
+    margin: 0 auto;
+  }
+}
+@media print {
+}
+
+
+
+/* general */
+
+
+/* header */
+header {
+  @include max-screen($breakpoint-sp) {
+  }
+  @include min-screen($breakpoint-pc) {
+    padding: 30px 0;
+    overflow: hidden;
+    .inner {
+      width: 1000px;
+      h1 {
+        width: 480px;
+        float: left;
+        a {
+          display: block;
+          margin: 0 0 10px;
+        }
+        span {
+          display: block;
+          @include font-size(13);
+          font-weight: normal;
+          letter-spacing: -.6px;
+        }
+      }
+      .contact-block {
+        width: 255px;
+        float: left;
+        margin: 0 15px 0 0;
+        a {
+          display: block;
+        }
+      }
+      .tel-block {
+        width: 250px;
+        float: left;
+        a {
+          display: block;
+          @include font-size(34);
+          font-weight: bold;
+          letter-spacing: 1px;
+          line-height: 1;
+          color: #244c7f;
+        }
+        .join-contact {
+          background: #353535;
+          @include border-radius(15,15,15,15);
+          color: $white;
+          @include font-size(12);
+          text-align: center;
+          padding: 6px 0;
+          margin: 0 0 5px;
+        }
+        .tel-number {
+          position: relative;
+          padding: 0 0 0 20px;
+          text-align: right;
+          &:before {
+            background: url(../img/common/icon_tel.png) no-repeat;
+            content: "";
+            display: block;
+            width: 19px;
+            height: 20px;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            margin: -10px 0 3px;
+          }
+        }
+        span {
+          display: block;
+          @include font-size(11.5);
+          text-align: right;
+        }
+      }
+    }
+  }
+}
+
+/* nav */
+nav {
+  background: #3e6eac;
+  @include max-screen($breakpoint-sp) {
+  }
+  @include min-screen($breakpoint-pc) {
+    .inner {
+      width: 1000px;
+      ul {
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+        position: relative;
+        &:before {
+          content: "";
+          display: block;
+          border-left: 1px solid #244c7f;
+          position: absolute;
+          left: 0;
+          top: 2px;
+          height: 56px;
+        }
+        li {
+          display: block;
+          justify-content: space-around;
+          align-items: flex-end;
+          a {
+            color: $white;
+            display: block;
+            @include font-size(20);
+            padding: 20px 38px;
+            line-height: 1;
+            position: relative;
+            transition-duration: 0.2s;
+            &:hover {
+              background: #244c7f;
+            }
+            &:after {
+              content: "";
+              display: block;
+              border-left: 1px solid #244c7f;
+              position: absolute;
+              right: 0;
+              top: 4px;
+              height: 52px;
+            }
+          }
+          &:first-child {
+            a {
+              padding: 16.5px 26px;
+            }
+          }
+          &:nth-child(2){
+            a {
+              padding: 20px 52px;
+            }
+          }
+          &:nth-child(3){
+            a {
+              padding: 20px 46px;
+            }
+          }
+          &:nth-child(4){
+            a {
+              padding: 20px 42px;
+            }
+          }
+          &:nth-child(5){
+            a {
+              padding: 20px 34px;
+            }
+          }
+          &:nth-child(6){
+            a {
+              padding: 20px 45px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.key-visual {
+  background: url(../img/common/kv_bg.png) repeat;
+  border-bottom: 3px solid #3e6eac;
+}
+/* drawer-nav */
+@include max-screen($breakpoint-sp) {
+  .drawer-nav {
+    ul {
+      li {
+        border-bottom: 1px solid #aaa;
+        padding: 10px 0;
+        a {
+          padding: 0 5px 0 15px;
+          color: $white;
+          position: relative;
+          display: block;
+          &:after {
+            @include arrow($white, 12, 3);
+            right: 5px;
+            top: 50%;
+            margin: -6px 0 0;
+          }
+          span {
+          }
+        }
+      }
+    }
+  }
+  .index {
+    ul {
+      li {
+        a.index {
+          border-left: 5px solid $green;
+        }
+      }
+    }
+  }
+  .team {
+    ul {
+      li {
+        a.team {
+          border-left: 5px solid $green;
+        }
+      }
+    }
+  }
+  .flow {
+    ul {
+      li {
+        a.flow {
+          border-left: 5px solid $green;
+        }
+      }
+    }
+  }
+  .price {
+    ul {
+      li {
+        a.price {
+          border-left: 5px solid $green;
+        }
+      }
+    }
+  }
+}
+
+
+/* foot-nav */
+.foot-nav {
+  background: #c6dbf5;
+  @include max-screen($breakpoint-sp) {
+  }
+  @include min-screen($breakpoint-pc) {
+    .inner {
+      padding: 70px 0 70px 380px;
+      position: relative;
+      overflow: hidden;
+      .footnav-icatch {
+        position: absolute;
+        width: 305px;
+        left: 30px;
+        top: 10px;
+      }
+      .contact-block {
+        width: 255px;
+        float: left;
+        margin: 0 15px 0 0;
+        a {
+          display: block;
+        }
+      }
+      .tel-block {
+        width: 250px;
+        float: left;
+        a {
+          display: block;
+          @include font-size(34);
+          font-weight: bold;
+          letter-spacing: 1px;
+          line-height: 1;
+          color: #244c7f;
+        }
+        .join-contact {
+          background: #353535;
+          @include border-radius(15,15,15,15);
+          color: $white;
+          @include font-size(12);
+          text-align: center;
+          padding: 6px 0;
+          margin: 0 0 5px;
+        }
+        .tel-number {
+          position: relative;
+          padding: 0 0 0 20px;
+          text-align: right;
+          &:before {
+            background: url(../img/common/icon_tel.png) no-repeat;
+            content: "";
+            display: block;
+            width: 19px;
+            height: 20px;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            margin: -10px 0 3px;
+          }
+        }
+        span {
+          display: block;
+          @include font-size(11.5);
+          text-align: right;
+        }
+      }
+    }
+  }
+}
+
+/* footer */
+footer {
+  background: #353535;
+  @include max-screen($breakpoint-sp) {
+  }
+  @include min-screen($breakpoint-pc) {
+    padding: 20px 0 16px;
+    .inner {
+      width: 1000px;
+      overflow: hidden;
+      h1 {
+        color: $white;
+        float: left;
+        width: 780px;
+        a {
+          display: inline-block;
+          vertical-align: middle;
+          margin: 0 14px 0 0;
+        }
+        span {
+          @include font-size(14);
+          display: inline-block;
+          vertical-align: middle;
+          line-height: 1;
+          font-weight: normal;
+          margin: 7px 0 0;
+          letter-spacing: .5px;
+        }
+      }
+      .footer-link {
+        width: 220px;
+        float: left;
+        padding: 10px 0 0;
+        ul {
+          list-style-type: none;
+          overflow: hidden;
+          float: right;
+          li {
+            float: left;
+            margin: 0 16px 0 0;
+            a {
+              border-right: 1px solid $white;
+              color: $white;
+              @include font-size(12);
+              padding: 0 16px 0 0;
+              transition-duration: 0.2s;
+              &:hover {
+                text-decoration: underline;
+              }
+            }
+            &:last-child {
+              margin: 0;
+              a {
+                border: none;
+                padding: 0;
+              }
+            }
+          }
+        }
+        .copyright {
+          color: $white;
+          clear: both;
+          @include font-size(10);
+          text-align: right;
+        }
+      }
+    }
+  }
+}
+
+@media print{
+  header {
+  }
+  .inner {
+    width: 1000px;
+    margin: 0 auto;
+  }
+  footer {
+  }
+  .sp-on {
+    display: none!important;
+  }
+}
